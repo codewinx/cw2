@@ -4,19 +4,55 @@ import { Sun, Zap, Leaf, ArrowRight, Shield, Award, Users } from "lucide-react";
 
 export default function Hero() {
   const [isVisible, setIsVisible] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  // Array of solar-related images
+  const solarImages = [
+    {
+      url: "https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=2072",
+      alt: "Solar Panel Installation"
+    },
+    {
+      url: "https://images.unsplash.com/photo-1559302504-64aae6ca6b6d?q=80&w=2072",
+      alt: "Rooftop Solar Panels"
+    },
+    {
+      url: "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?q=80&w=2072",
+      alt: "Solar Farm Energy"
+    },
+    {
+      url: "https://images.unsplash.com/photo-1497440001374-f26997328c1b?q=80&w=2072",
+      alt: "Solar Panel Technology"
+    },
+    {
+      url: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?q=80&w=2072",
+      alt: "Solar Energy Solutions"
+    }
+  ];
 
   useEffect(() => {
     setIsVisible(true);
   }, []);
 
+  // Auto-rotate images every 3 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => 
+        prevIndex === solarImages.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [solarImages.length]);
+
   return (
     <section
       id="home"
-      className="relative flex items-center overflow-hidden bg-gradient-to-br from-slate-50 via-orange-50/30 to-amber-50/50 pt-32 pb-16 min-h-[90vh]"
+      className="relative flex items-center overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50/30 to-slate-100 pt-32 pb-16 min-h-[90vh]"
     >
       {/* Decorative elements */}
-      <div className="absolute top-40 right-20 w-72 h-72 bg-orange-300/20 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-40 left-20 w-96 h-96 bg-amber-300/20 rounded-full blur-3xl"></div>
+      <div className="absolute top-40 right-20 w-72 h-72 bg-yellow-300/30 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-40 left-20 w-96 h-96 bg-blue-300/20 rounded-full blur-3xl"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 w-full">
         <div className="grid lg:grid-cols-2 gap-8 items-center">
@@ -25,7 +61,7 @@ export default function Hero() {
           <div className="space-y-6">
             {/* Badge */}
             <div 
-              className={`inline-flex items-center gap-2 px-4 py-2 bg-white rounded-full shadow-md border border-orange-200 transition-all duration-700 ${
+              className={`inline-flex items-center gap-2 px-4 py-2 bg-white rounded-full shadow-md border border-yellow-300 transition-all duration-700 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
               }`}
             >
@@ -39,12 +75,12 @@ export default function Hero() {
             }`}>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-none">
                 <span className="block text-gray-900">BHARAT</span>
-                <span className="block bg-gradient-to-r from-orange-600 via-amber-500 to-orange-600 bg-clip-text text-transparent">
+                <span className="block bg-gradient-to-r from-yellow-600 via-yellow-500 to-yellow-700 bg-clip-text text-transparent">
                   INFRA
                 </span>
               </h1>
               <div className="flex items-center gap-3">
-                <div className="h-1 w-16 bg-gradient-to-r from-orange-500 to-amber-500 rounded-full"></div>
+                <div className="h-1 w-16 bg-gradient-to-r from-yellow-500 to-yellow-600 rounded-full"></div>
                 <p className="text-lg md:text-xl text-gray-600 font-semibold">Solar Solutions</p>
               </div>
             </div>
@@ -66,12 +102,12 @@ export default function Hero() {
               }`}
             >
               {[
-                { icon: Users, number: "5000+", label: "Customers" },
+                { icon: Users, number: "1000+", label: "Customers" },
                 { icon: Award, number: "50MW+", label: "Installed" },
-                { icon: Shield, number: "25 Yrs", label: "Warranty" }
+                { icon: Shield, number: "7Yrs", label: "Warranty" }
               ].map((stat, idx) => (
                 <div key={idx} className="text-center">
-                  <div className="inline-flex items-center justify-center w-10 h-10 bg-gradient-to-br from-orange-500 to-amber-500 rounded-xl mb-2">
+                  <div className="inline-flex items-center justify-center w-10 h-10 bg-gradient-to-br from-yellow-500 to-yellow-700 rounded-xl mb-2">
                     <stat.icon className="w-5 h-5 text-white" />
                   </div>
                   <div className="text-xl md:text-2xl font-bold text-gray-900">{stat.number}</div>
@@ -95,7 +131,7 @@ export default function Hero() {
                   key={idx}
                   className="flex items-center gap-2 px-4 py-2 bg-white rounded-full shadow-sm border border-gray-200 hover:shadow-md hover:scale-105 transition-all duration-300"
                 >
-                  <item.icon className="w-4 h-4 text-orange-600" />
+                  <item.icon className="w-4 h-4 text-yellow-600" />
                   <span className="text-sm font-medium text-gray-700">{item.text}</span>
                 </div>
               ))}
@@ -107,9 +143,9 @@ export default function Hero() {
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
               }`}
             >
-              {/* <a
+              <a
                 href="#contact"
-                className="group px-6 py-3 bg-gradient-to-r from-orange-600 to-amber-500 text-white font-bold rounded-2xl hover:shadow-xl hover:shadow-orange-500/40 transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
+                className="group px-6 py-3 bg-gradient-to-r from-yellow-600 to-yellow-700 text-white font-bold rounded-2xl hover:shadow-xl hover:shadow-yellow-500/40 transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
               >
                 Get Free Quote
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -120,11 +156,11 @@ export default function Hero() {
                 className="px-6 py-3 bg-white text-gray-900 font-bold rounded-2xl border-2 border-gray-900 hover:bg-gray-900 hover:text-white transform hover:scale-105 transition-all duration-300 flex items-center justify-center"
               >
                 View Services
-              </a> */}
+              </a>
             </div>
           </div>
 
-          {/* RIGHT SECTION - Image */}
+          {/* RIGHT SECTION - Image Carousel */}
           <div 
             className={`relative transition-all duration-1000 delay-300 ${
               isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
@@ -133,17 +169,44 @@ export default function Hero() {
             {/* Main Image Container */}
             <div className="relative">
               {/* Decorative background */}
-              <div className="absolute -inset-4 bg-gradient-to-br from-orange-400 to-amber-400 rounded-3xl blur-2xl opacity-20"></div>
+              <div className="absolute -inset-4 bg-gradient-to-br from-yellow-400 to-blue-600 rounded-3xl blur-2xl opacity-20"></div>
               
-              {/* Image */}
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-                <img
-                  src="https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=2072"
-                  alt="Solar Panel Installation"
-                  className="w-full h-[450px] object-cover"
-                />
-                {/* Gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+              {/* Image Carousel */}
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl h-[450px]">
+                {solarImages.map((image, index) => (
+                  <div
+                    key={index}
+                    className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
+                      index === currentImageIndex
+                        ? 'opacity-100 scale-100'
+                        : 'opacity-0 scale-105'
+                    }`}
+                  >
+                    <img
+                      src={image.url}
+                      alt={image.alt}
+                      className="w-full h-full object-cover"
+                    />
+                    {/* Gradient overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Image indicators */}
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+                {solarImages.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentImageIndex(index)}
+                    className={`transition-all duration-300 rounded-full ${
+                      index === currentImageIndex
+                        ? 'w-8 h-2 bg-yellow-500'
+                        : 'w-2 h-2 bg-white/50 hover:bg-white/80'
+                    }`}
+                    aria-label={`Go to slide ${index + 1}`}
+                  />
+                ))}
               </div>
 
               {/* Floating card - Energy Savings */}

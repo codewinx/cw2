@@ -6,33 +6,48 @@ import { Sun, Menu, X } from "lucide-react";
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [visible, setVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
+  // Hide navbar on scroll down, show on scroll up
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 5);
+      const currentScrollY = window.scrollY;
+
+      // Hide when scrolling down beyond 100px, show when scrolling up
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setVisible(false);
+      } else {
+        setVisible(true);
+      }
+
+      setScrolled(currentScrollY > 5);
+      setLastScrollY(currentScrollY);
     };
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [lastScrollY]);
 
+  // Smooth scroll for links
   useEffect(() => {
     const links = document.querySelectorAll("a[data-scroll]");
-    links.forEach(link => {
-      link.addEventListener("click", (e) => {
-        e.preventDefault();
-        setMobileMenuOpen(false);
-        const targetId = link.getAttribute("href").replace("#", "");
-        const targetElement = document.getElementById(targetId);
-        if (targetElement) {
-          smoothScrollTo(targetElement);
-        }
-      });
-    });
+    const handleClick = (e, link) => {
+      e.preventDefault();
+      setMobileMenuOpen(false);
+      const targetId = link.getAttribute("href").replace("#", "");
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) smoothScrollTo(targetElement);
+    };
+
+    links.forEach((link) =>
+      link.addEventListener("click", (e) => handleClick(e, link))
+    );
 
     return () => {
-      links.forEach(link => {
-        link.removeEventListener("click", () => {});
-      });
+      links.forEach((link) =>
+        link.removeEventListener("click", (e) => handleClick(e, link))
+      );
     };
   }, []);
 
@@ -53,28 +68,28 @@ export default function Header() {
 
     function easeInOutQuad(t, b, c, d) {
       t /= d / 2;
-      if (t < 1) return c / 2 * t * t + b;
+      if (t < 1) return (c / 2) * t * t + b;
       t--;
-      return -c / 2 * (t * (t - 2) - 1) + b;
+      return (-c / 2) * (t * (t - 2) - 1) + b;
     }
 
     requestAnimationFrame(animationScroll);
   };
 
   return (
-    <header 
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
-        scrolled 
-          ? 'bg-white/95 backdrop-blur-md shadow-lg py-3' 
-          : 'bg-gradient-to-b from-white via-white/95 to-transparent py-5'
-      }`}
+    <header
+      className={`fixed top-0 left-0 w-full z-50 transition-transform duration-500 ease-in-out ${
+        scrolled
+          ? "bg-white/95 backdrop-blur-md shadow-lg py-3"
+          : "bg-gradient-to-b from-white via-white/95 to-transparent py-5"
+      } ${visible ? "translate-y-0" : "-translate-y-full"}`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex justify-between items-center">
           {/* Logo */}
-          <Link 
-            href="#home" 
-            data-scroll 
+          <Link
+            href="#home"
+            data-scroll
             className="flex items-center gap-3 group cursor-pointer"
           >
             <div className="relative">
@@ -87,7 +102,9 @@ export default function Header() {
               <h1 className="text-2xl font-bold bg-gradient-to-r from-amber-600 via-orange-600 to-amber-700 bg-clip-text text-transparent">
                 Bharat Infra
               </h1>
-              <p className="text-xs text-gray-600 font-medium tracking-wide">Solar Solutions</p>
+              <p className="text-xs text-gray-600 font-medium tracking-wide">
+                Solar Solutions
+              </p>
             </div>
           </Link>
 
@@ -97,7 +114,7 @@ export default function Header() {
               { href: "#home", label: "Home" },
               { href: "#about", label: "About" },
               { href: "#services", label: "Services" },
-              { href: "#contact", label: "Contact" }
+              { href: "#contact", label: "Contact" },
             ].map((item, idx) => (
               <a
                 key={idx}
@@ -130,7 +147,7 @@ export default function Header() {
         {/* Mobile Menu */}
         <div
           className={`md:hidden overflow-hidden transition-all duration-500 ease-in-out ${
-            mobileMenuOpen ? 'max-h-96 opacity-100 mt-6' : 'max-h-0 opacity-0'
+            mobileMenuOpen ? "max-h-96 opacity-100 mt-6" : "max-h-0 opacity-0"
           }`}
         >
           <nav className="flex flex-col gap-2 pb-4">
@@ -138,7 +155,7 @@ export default function Header() {
               { href: "#home", label: "Home" },
               { href: "#about", label: "About" },
               { href: "#services", label: "Services" },
-              { href: "#contact", label: "Contact" }
+              { href: "#contact", label: "Contact" },
             ].map((item, idx) => (
               <a
                 key={idx}
