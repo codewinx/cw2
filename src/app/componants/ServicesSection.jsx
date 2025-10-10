@@ -117,6 +117,9 @@ export default function ServicesSection() {
       color: "from-cyan-500 to-blue-500",
     },
   ];
+useEffect(() => {
+  console.log("Slug test:", `/services/${slugify(services[0].title)}`);
+}, []);
 
   return (
     <section
@@ -188,12 +191,16 @@ export default function ServicesSection() {
                 </p>
 
                 {/* ✅ FIX: Clean, un-nested Link component for successful navigation */}
-                <Link
-                  href={`/services/${slugify(service?.title || "")}`}
-                  className="inline-flex items-center gap-2 text-sm font-semibold text-orange-600 hover:gap-3 transition-all"
-                >
-                  Learn More →
-                </Link>
+          <Link
+  href={`/services/${slugify(service.title)}`}
+  className="inline-flex items-center gap-2 text-sm font-semibold text-orange-600 hover:gap-3 transition-all"
+  prefetch={false}
+>
+  Learn More →
+</Link>
+
+
+
                 
               </div>
 
