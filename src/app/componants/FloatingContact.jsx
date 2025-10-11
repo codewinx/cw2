@@ -15,8 +15,8 @@ const PhoneIcon = () => (
 
 const FloatingContact = () => {
   // 💡 IMPORTANT: Replace with your actual contact details
-  const whatsappNumber = '+918669450231'; 
-  const phoneNumber = '8669450231';
+  const whatsappNumber = '+918080529797'; 
+  const phoneNumber = '8080529797';
 
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col space-y-4">

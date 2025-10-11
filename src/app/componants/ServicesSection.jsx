@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import {
   Sun,
   Zap,
@@ -10,7 +11,6 @@ import {
   Radio,
   Waves,
   Shield,
-  ArrowRight,
 } from "lucide-react";
 
 const slugify = (text) =>
@@ -23,10 +23,10 @@ const slugify = (text) =>
     .replace(/^-+/, "")
     .replace(/-+$/, "");
 
-
 export default function ServicesSection() {
   const [isVisible, setIsVisible] = useState(false);
   const [hoveredCard, setHoveredCard] = useState(null);
+  const router = useRouter();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -117,9 +117,11 @@ export default function ServicesSection() {
       color: "from-cyan-500 to-blue-500",
     },
   ];
-useEffect(() => {
-  console.log("Slug test:", `/services/${slugify(services[0].title)}`);
-}, []);
+
+  const handleClick = (slug) => {
+    console.log("Navigating to:", `/services/${slug}`);
+    router.push(`/services/${slug}`);
+  };
 
   return (
     <section
@@ -190,18 +192,12 @@ useEffect(() => {
                   {service.description}
                 </p>
 
-                {/* ✅ FIX: Clean, un-nested Link component for successful navigation */}
-          <Link
-  href={`/services/${slugify(service.title)}`}
-  className="inline-flex items-center gap-2 text-sm font-semibold text-orange-600 hover:gap-3 transition-all"
-  prefetch={false}
->
-  Learn More →
-</Link>
-
-
-
-                
+                <button
+                  onClick={() => handleClick(slugify(service.title))}
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-orange-600 hover:gap-3 transition-all"
+                >
+                  Learn More →
+                </button>
               </div>
 
               <div

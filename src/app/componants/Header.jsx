@@ -2,7 +2,6 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Sun, Menu, X } from "lucide-react";
-
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -97,12 +96,14 @@ export default function Header() {
               </div>
             </div>
             <div>
-              <h1 className="text-2xl font-bold bg-gradient-to-r from-amber-600 via-orange-600 to-amber-700 bg-clip-text text-transparent">
+              {/* <h1 className="text-2xl font-bold bg-gradient-to-r from-amber-600 via-orange-600 to-amber-700 bg-clip-text text-transparent">
                 Bharat Infra
               </h1>
               <p className="text-xs text-gray-600 font-medium tracking-wide">
                 Solar Solutions
-              </p>
+              </p> */}
+                transmission line image on the sliding widow 
+
             </div>
           </Link>
 
