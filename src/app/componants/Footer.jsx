@@ -38,7 +38,8 @@ export default function Footer() {
               <div className="relative">
                 <div className="absolute inset-0 bg-gradient-to-br from-sky-400 to-blue-600 rounded-xl blur-md opacity-50 group-hover:opacity-75 transition-opacity"></div>
                 <div className="relative bg-gradient-to-br from-sky-500 via-blue-600 to-blue-700 p-2.5 rounded-xl transform group-hover:rotate-180 transition-transform duration-500">
-                  <Sun className="w-6 h-6 text-white" strokeWidth={2.5} />
+                  {/* <Sun className="w-6 h-6 text-white" strokeWidth={2.5} /> */}
+                  
                 </div>
               </div>
               <div>
@@ -153,8 +154,8 @@ export default function Footer() {
                   <Mail className="w-4 h-4 text-blue-500 group-hover:text-white" />
                 </div>
                 <div>
-                  <a href="mailto:info@bharatinfra.com" className="text-gray-400 hover:text-blue-500 text-sm transition-colors break-all">
-                    info@bharatinfra.com
+                  <a href="mailto:bharatinfra8080@gmail.com" className="text-gray-400 hover:text-blue-500 text-sm transition-colors break-all">
+                    bharatinfra8080@gmail.com
                   </a>
                 </div>
               </li>
