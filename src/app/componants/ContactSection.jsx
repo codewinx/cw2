@@ -15,8 +15,8 @@ import {
 
 export default function ContactSection() {
   const [isVisible, setIsVisible] = useState(false);
-  const [isLoading, setIsLoading] = useState(false); // New: Tracks API loading state
-  const [responseMessage, setResponseMessage] = useState({ type: null, text: null }); // New: Stores success or error messages
+  const [isLoading, setIsLoading] = useState(false);
+  const [responseMessage, setResponseMessage] = useState({ type: null, text: null });
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -55,7 +55,6 @@ export default function ContactSection() {
     setResponseMessage({ type: null, text: null });
 
     try {
-      // 🚀 FIX: Sending data to the backend API route
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
@@ -68,7 +67,6 @@ export default function ContactSection() {
 
       if (response.ok && result.success) {
         setResponseMessage({ type: 'success', text: result.message || "Email sent successfully!" });
-        // Clear form fields on success
         setFormData({
           name: "",
           email: "",
@@ -86,7 +84,6 @@ export default function ContactSection() {
       setResponseMessage({ type: 'error', text: "Network error. Please check your connection." });
     } finally {
       setIsLoading(false);
-      // Clear message after 5 seconds
       setTimeout(() => setResponseMessage({ type: null, text: null }), 5000);
     }
   };
@@ -95,25 +92,25 @@ export default function ContactSection() {
     {
       icon: Phone,
       title: "Phone",
-      details: ["+91 98765 43210", "+91 87654 32109"],
+      details: ["+91 8080529797"],
       color: "from-green-500 to-emerald-500",
     },
     {
       icon: Mail,
       title: "Email",
-      details: ["info@company.com", "projects@company.com"],
-      color: "from-blue-500 to-cyan-500",
+      details: ["bharatinfra8080@gmail.com"],
+      color: "from-sky-500 to-blue-600",
     },
     {
       icon: MapPin,
       title: "Office Location",
-      details: ["123 Business Park", "Latur, Maharashtra, India"],
-      color: "from-orange-500 to-amber-500",
+      details: ["Office No.4 latur plaza opposite of kayamkhani petrol pump ambajogai road latur maharashtra 413512"],
+      color: "from-sky-500 to-blue-700",
     },
     {
       icon: Clock,
       title: "Working Hours",
-      details: ["Mon - Sat: 9:00 AM - 6:00 PM", "Sunday: Closed"],
+      details: ["Every Day", "24/7"],
       color: "from-purple-500 to-pink-500",
     },
   ];
@@ -132,10 +129,10 @@ export default function ContactSection() {
   return (
     <section
       id="contact"
-      className="relative py-16 bg-gradient-to-br from-gray-50 to-blue-50/30 overflow-hidden"
+      className="relative py-16 bg-gradient-to-br from-gray-50 to-sky-50/30 overflow-hidden"
     >
       {/* Background Decorations */}
-      <div className="absolute top-20 right-0 w-96 h-96 bg-orange-200/30 rounded-full blur-3xl"></div>
+      <div className="absolute top-20 right-0 w-96 h-96 bg-sky-200/30 rounded-full blur-3xl"></div>
       <div className="absolute bottom-20 left-0 w-96 h-96 bg-blue-200/30 rounded-full blur-3xl"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
@@ -145,9 +142,9 @@ export default function ContactSection() {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-orange-100 rounded-full mb-4">
-            <Mail className="w-4 h-4 text-orange-600" />
-            <span className="text-sm font-semibold text-orange-600">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-sky-100 rounded-full mb-4">
+            <Mail className="w-4 h-4 text-sky-600" />
+            <span className="text-sm font-semibold text-sky-600">
               Get In Touch
             </span>
           </div>
@@ -234,7 +231,7 @@ export default function ContactSection() {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full pl-11 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:border-orange-500 focus:outline-none transition-colors"
+                      className="w-full pl-11 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:outline-none transition-colors"
                       placeholder="Jamir shaikh"
                     />
                   </div>
@@ -251,7 +248,7 @@ export default function ContactSection() {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full pl-11 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:border-orange-500 focus:outline-none transition-colors"
+                      className="w-full pl-11 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:outline-none transition-colors"
                       placeholder="jamir.shaikh@gmail.com"
                     />
                   </div>
@@ -271,7 +268,7 @@ export default function ContactSection() {
                       value={formData.phone}
                       onChange={handleChange}
                       required
-                      className="w-full pl-11 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:border-orange-500 focus:outline-none transition-colors"
+                      className="w-full pl-11 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:outline-none transition-colors"
                       placeholder="+91 8669450231"
                     />
                   </div>
@@ -287,7 +284,7 @@ export default function ContactSection() {
                       name="company"
                       value={formData.company}
                       onChange={handleChange}
-                      className="w-full pl-11 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:border-orange-500 focus:outline-none transition-colors"
+                      className="w-full pl-11 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:outline-none transition-colors"
                       placeholder="Your Company"
                     />
                   </div>
@@ -303,7 +300,7 @@ export default function ContactSection() {
                   value={formData.service}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-orange-500 focus:outline-none transition-colors"
+                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:outline-none transition-colors"
                 >
                   <option value="">Select a service</option>
                   {services.map((service, idx) => (
@@ -326,7 +323,7 @@ export default function ContactSection() {
                     onChange={handleChange}
                     required
                     rows="4"
-                    className="w-full pl-11 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:border-orange-500 focus:outline-none transition-colors resize-none"
+                    className="w-full pl-11 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:outline-none transition-colors resize-none"
                     placeholder="Tell us about your project..."
                   ></textarea>
                 </div>
@@ -335,7 +332,7 @@ export default function ContactSection() {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full bg-gradient-to-r from-orange-500 to-amber-500 text-white font-bold py-4 px-6 rounded-xl hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full bg-gradient-to-r from-sky-500 to-blue-700 text-white font-bold py-4 px-6 rounded-xl hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isLoading ? (
                     <>
@@ -370,7 +367,7 @@ export default function ContactSection() {
               ></iframe>
             </div>
 
-            <div className="bg-gradient-to-br from-orange-500 to-amber-500 rounded-2xl shadow-xl p-8 text-white">
+            <div className="bg-gradient-to-br from-sky-500 to-blue-700 rounded-2xl shadow-xl p-8 text-white">
               <h3 className="text-2xl font-bold mb-4">Why Choose Us?</h3>
               <ul className="space-y-3">
                 {[

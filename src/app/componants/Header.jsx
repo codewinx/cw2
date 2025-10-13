@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Sun, Menu, X } from "lucide-react";
+
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -13,7 +14,6 @@ export default function Header() {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
-      // Hide when scrolling down beyond 100px, show when scrolling up
       if (currentScrollY > lastScrollY && currentScrollY > 100) {
         setVisible(false);
       } else {
@@ -89,21 +89,15 @@ export default function Header() {
             data-scroll
             className="flex items-center gap-3 group cursor-pointer"
           >
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-amber-400 to-orange-500 rounded-xl blur-md opacity-50 group-hover:opacity-75 transition-opacity"></div>
-              <div className="relative bg-gradient-to-br from-amber-400 via-orange-500 to-amber-600 p-2.5 rounded-xl transform group-hover:scale-110 transition-transform duration-300">
-                <Sun className="w-6 h-6 text-white animate-pulse" strokeWidth={2.5} />
-              </div>
-            </div>
+           
             <div>
-              {/* <h1 className="text-2xl font-bold bg-gradient-to-r from-amber-600 via-orange-600 to-amber-700 bg-clip-text text-transparent">
-                Bharat Infra
-              </h1>
-              <p className="text-xs text-gray-600 font-medium tracking-wide">
-                Solar Solutions
-              </p> */}
-                transmission line image on the sliding widow 
-
+             <div>
+              <img
+              src="/images/bharatinfralogo.png"
+              alt="Bharat Infra Logo"
+              className="h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+            />
+            </div>
             </div>
           </Link>
 
@@ -119,16 +113,16 @@ export default function Header() {
                 key={idx}
                 href={item.href}
                 data-scroll
-                className="relative px-5 py-2.5 text-gray-700 font-medium text-sm transition-colors duration-300 hover:text-orange-600 group"
+                className="relative px-5 py-2.5 text-gray-700 font-medium text-sm transition-colors duration-300 hover:text-blue-600 group"
               >
                 {item.label}
-                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-amber-500 to-orange-600 group-hover:w-3/4 transition-all duration-300 rounded-full"></span>
+                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-sky-400 to-blue-600 group-hover:w-3/4 transition-all duration-300 rounded-full"></span>
               </a>
             ))}
             <a
               href="#contact"
               data-scroll
-              className="ml-4 px-6 py-2.5 bg-gradient-to-r from-amber-500 to-orange-600 text-white font-semibold rounded-full hover:shadow-lg hover:shadow-orange-500/50 transform hover:scale-105 transition-all duration-300"
+              className="ml-4 px-6 py-2.5 bg-gradient-to-r from-sky-500 to-blue-700 text-white font-semibold rounded-full hover:shadow-lg hover:shadow-blue-500/50 transform hover:scale-105 transition-all duration-300"
             >
               Get Quote
             </a>
@@ -137,7 +131,7 @@ export default function Header() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 text-gray-700 hover:text-orange-600 transition-colors"
+            className="md:hidden p-2 text-gray-700 hover:text-blue-600 transition-colors"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -160,7 +154,7 @@ export default function Header() {
                 key={idx}
                 href={item.href}
                 data-scroll
-                className="px-4 py-3 text-gray-700 font-medium rounded-lg hover:bg-gradient-to-r hover:from-amber-50 hover:to-orange-50 hover:text-orange-600 transition-all duration-300"
+                className="px-4 py-3 text-gray-700 font-medium rounded-lg hover:bg-gradient-to-r hover:from-sky-50 hover:to-blue-50 hover:text-blue-600 transition-all duration-300"
               >
                 {item.label}
               </a>
@@ -168,7 +162,7 @@ export default function Header() {
             <a
               href="#contact"
               data-scroll
-              className="mx-4 mt-2 px-6 py-3 bg-gradient-to-r from-amber-500 to-orange-600 text-white font-semibold rounded-full text-center hover:shadow-lg hover:shadow-orange-500/50 transition-all duration-300"
+              className="mx-4 mt-2 px-6 py-3 bg-gradient-to-r from-sky-500 to-blue-700 text-white font-semibold rounded-full text-center hover:shadow-lg hover:shadow-blue-500/50 transition-all duration-300"
             >
               Get Quote
             </a>
@@ -177,7 +171,7 @@ export default function Header() {
       </div>
 
       {/* Decorative gradient line */}
-      <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-orange-500 to-transparent opacity-30"></div>
+      <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-30"></div>
     </header>
   );
 }

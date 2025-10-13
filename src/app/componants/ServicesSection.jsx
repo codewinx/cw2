@@ -51,7 +51,7 @@ export default function ServicesSection() {
         "Large-scale solar power plant installations with high efficiency panels and maximum energy output.",
       image:
         "https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=2072",
-      color: "from-orange-500 to-amber-500",
+      color: "from-sky-500 to-blue-600",
     },
     {
       icon: Zap,
@@ -68,7 +68,7 @@ export default function ServicesSection() {
       description:
         "Solar-powered agricultural pumps for irrigation, helping farmers save costs and increase productivity.",
       image:
-        "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?q=80&w=2070",
+        "https://images.unsplash.com/photo-1625246333195-78d9c38ad649?q=80&w=2070",
       color: "from-green-500 to-emerald-500",
     },
     {
@@ -105,7 +105,7 @@ export default function ServicesSection() {
         "Installation and maintenance of telecommunication infrastructure including towers and network equipment.",
       image:
         "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072",
-      color: "from-red-500 to-orange-600",
+      color: "from-red-500 to-sky-600",
     },
     {
       icon: Waves,
@@ -126,10 +126,10 @@ export default function ServicesSection() {
   return (
     <section
       id="services"
-      className="relative py-16 bg-gradient-to-br from-gray-50 to-orange-50/30 overflow-hidden"
+      className="relative py-16 bg-gradient-to-br from-gray-50 to-sky-50/30 overflow-hidden"
     >
       {/* Background decorations */}
-      <div className="absolute top-20 right-0 w-96 h-96 bg-orange-200/30 rounded-full blur-3xl"></div>
+      <div className="absolute top-20 right-0 w-96 h-96 bg-sky-200/30 rounded-full blur-3xl"></div>
       <div className="absolute bottom-20 left-0 w-96 h-96 bg-blue-200/30 rounded-full blur-3xl"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
@@ -141,9 +141,9 @@ export default function ServicesSection() {
               : "opacity-0 translate-y-10"
           }`}
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-orange-100 rounded-full mb-4">
-            <Zap className="w-4 h-4 text-orange-600" />
-            <span className="text-sm font-semibold text-orange-600">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-sky-100 rounded-full mb-4">
+            <Zap className="w-4 h-4 text-sky-600" />
+            <span className="text-sm font-semibold text-sky-600">
               Our Services
             </span>
           </div>
@@ -185,7 +185,7 @@ export default function ServicesSection() {
               </div>
 
               <div className="p-5">
-                <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-orange-600 transition-colors">
+                <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
                   {service.title}
                 </h3>
                 <p className="text-sm text-gray-600 leading-relaxed mb-4">
@@ -194,14 +194,14 @@ export default function ServicesSection() {
 
                 <button
                   onClick={() => handleClick(slugify(service.title))}
-                  className="inline-flex items-center gap-2 text-sm font-semibold text-orange-600 hover:gap-3 transition-all"
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 hover:gap-3 transition-all"
                 >
                   Learn More →
                 </button>
               </div>
 
               <div
-                className={`absolute inset-0 border-2 border-orange-500 rounded-2xl transition-opacity duration-300 ${
+                className={`absolute inset-0 border-2 border-blue-500 rounded-2xl transition-opacity duration-300 ${
                   hoveredCard === idx ? "opacity-100" : "opacity-0"
                 }`}
               ></div>

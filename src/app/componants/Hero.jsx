@@ -9,17 +9,19 @@ export default function Hero() {
 
   const slides = [
     {
-       image: "https://images.unsplash.com/photo-1542336391-ae2936d8efe4?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=1780",
-      text: "Your Trusted Partner in Sustainable Energy",
+      image:
+        "https://images.unsplash.com/photo-1542336391-ae2936d8efe4?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=1780",
+      text: "Solar Installation & O&M Services – Powering the Future with Megawatt-Scale Solar Excellence.",
     },
     {
-      image: "https://images.unsplash.com/photo-1509390559807-3144e7d29097?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1171",
-      text: "Leading Solar Installation & Maintenance Services",
+      image:
+        "https://images.unsplash.com/photo-1509390559807-3144e7d29097?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1171",
+      text: "11KV & 33KV Transmission Line Solutions – Delivering Reliable Power, One Line at a Time.",
     },
     {
-       image: "https://images.unsplash.com/photo-1542336391-ae2936d8efe4?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=1780",
-      text: "Your Trusted Partner in Sustainable Energy",
-     
+      image:
+        "https://images.unsplash.com/photo-1542336391-ae2936d8efe4?ixlib=rb-4.1.0&auto=format&fit=crop&q=80&w=1780",
+      text: "Civil Construction Works – Building the Foundation for a Sustainable Future.",
     },
   ];
 
@@ -68,8 +70,8 @@ export default function Hero() {
             key={index}
             className={`absolute inset-0 transition-all duration-[1500ms] ease-out ${
               index === currentImageIndex
-                ? "opacity-90 scale-105"
-                : "opacity-10 scale-100"
+                ? "opacity-100 scale-105"
+                : "opacity-0 scale-100"
             }`}
           >
             <div
@@ -78,7 +80,7 @@ export default function Hero() {
                 backgroundImage: `url('${slide.image}')`,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
-                filter: "brightness(0.5)",
+                filter: "brightness(0.8)",
               }}
             />
           </div>
@@ -107,7 +109,7 @@ export default function Hero() {
                       key={`${titleKey}-${index}`}
                       className="inline-block"
                       style={{
-                        animation: `letterPop 1s ease-out ${index * 0.1}s both`,
+                        animation: `letterPop 2s ease-out ${index * 0.2}s both`,
                       }}
                     >
                       {letter === " " ? "\u00A0" : letter}
@@ -117,10 +119,10 @@ export default function Hero() {
               </h1>
             </div>
 
-            {/* Animated Line */}
+            {/* Animated Line (💙 Changed to blue gradient) */}
             <div
               key={`line-${titleKey}`}
-              className="h-1 w-24 bg-gradient-to-r from-yellow-400 to-orange-500"
+              className="h-1 w-24 bg-gradient-to-r from-sky-500 to-blue-700"
               style={{
                 animation: "slideRight 1s ease-out 0.5s both",
               }}
@@ -142,9 +144,9 @@ export default function Hero() {
               ))}
             </div>
 
-            {/* ✅ Static Buttons */}
+            {/* ✅ Static Buttons (💙 Updated to blue) */}
             <div className="flex flex-wrap gap-4 items-center mt-6">
-              <button className="px-10 py-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-bold rounded-full hover:shadow-2xl hover:shadow-orange-500/40 transition-all duration-300 hover:scale-105 text-base">
+              <button className="px-10 py-4 bg-gradient-to-r from-sky-500 to-blue-700 text-white font-bold rounded-full hover:shadow-2xl hover:shadow-blue-500/40 transition-all duration-300 hover:scale-105 text-base">
                 Get Started
               </button>
               <button className="px-10 py-4 bg-transparent text-white font-semibold rounded-full border-2 border-white/60 hover:bg-white/10 hover:border-white transition-all duration-300 text-base">
