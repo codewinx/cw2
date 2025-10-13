@@ -94,12 +94,14 @@ export default function ContactSection() {
       title: "Phone",
       details: ["+91 8080529797"],
       color: "from-green-500 to-emerald-500",
+      link: "tel:+918080529797",
     },
     {
       icon: Mail,
       title: "Email",
       details: ["bharatinfra8080@gmail.com"],
       color: "from-sky-500 to-blue-600",
+      link: "mailto:bharatinfra8080@gmail.com",
     },
     {
       icon: MapPin,
@@ -164,10 +166,12 @@ export default function ContactSection() {
           }`}
         >
           {contactInfo.map((info, idx) => (
-            <div
+            <a
               key={idx}
-              className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer"
+              href={info.link || "#"}
+              className={`group bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 block ${info.link ? 'cursor-pointer' : 'cursor-default'}`}
               style={{ transitionDelay: `${idx * 100}ms` }}
+              onClick={(e) => !info.link && e.preventDefault()}
             >
               <div
                 className={`inline-flex p-3 bg-gradient-to-br ${info.color} rounded-xl shadow-lg mb-4`}
@@ -182,7 +186,7 @@ export default function ContactSection() {
                   {detail}
                 </p>
               ))}
-            </div>
+            </a>
           ))}
         </div>
 
@@ -323,7 +327,7 @@ export default function ContactSection() {
                     onChange={handleChange}
                     required
                     rows="4"
-                    className="w-full pl-11 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:outline-none transition-colors resize-none"
+                    className="w-full pl-11 pr-4 py-3 border-2 border-gray-200 rounded-xl focus:border-blue-500 focus:outline-none resize-none"
                     placeholder="Tell us about your project..."
                   ></textarea>
                 </div>
