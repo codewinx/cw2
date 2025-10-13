@@ -93,9 +93,9 @@ export default function Header() {
             <div>
              <div>
               <img
-              src="/images/bharatinfralogo.png"
+              src="/images/LOGO3.png"
               alt="Bharat Infra Logo"
-              className="h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+              className="h-18 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
             />
             </div>
             </div>
