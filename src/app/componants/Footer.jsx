@@ -36,17 +36,16 @@ export default function Footer() {
           <div className="space-y-6">
             <div className="flex items-center gap-3 group">
               <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-sky-400 to-blue-600 rounded-xl blur-md opacity-50 group-hover:opacity-75 transition-opacity"></div>
-                <div className="relative bg-gradient-to-br from-sky-500 via-blue-600 to-blue-700 p-2.5 rounded-xl transform group-hover:rotate-180 transition-transform duration-500">
-                  {/* <Sun className="w-6 h-6 text-white" strokeWidth={2.5} /> */}
-                  <img
-                      src="/images/logo.png"
-                      alt="Bharat Infra Logo"
-                      
-              
-            />
-                </div>
-              </div>
+  <div className="relative p-2.5 rounded-xl transition-transform duration-500">
+    <img
+      src="/images/logo1.png"
+      alt="Bharat Infra Logo"
+      className="h-16 w-auto object-contain invert brightness-200" // adjust h-16 as needed
+    />
+  </div>
+</div>
+
+
               <div>
                 <h3 className="text-xl font-bold bg-gradient-to-r from-sky-400 to-blue-500 bg-clip-text text-transparent">
                   Bharat Infra

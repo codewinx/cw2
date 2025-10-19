@@ -77,7 +77,7 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-in-out bg-white shadow-lg py-4 ${
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-in-out bg-white shadow-lg py-1 ${
         visible ? "translate-y-0" : "-translate-y-full"
       }`}
     >
@@ -93,7 +93,7 @@ export default function Header() {
             <div>
              <div>
               <img
-  src="/images/logo.png"
+  src="/images/logo1.png"
   alt="Bharat Infra Logo"
   className="h-[120px] w-auto object-contain transition-transform duration-300 group-hover:scale-105"
 />
