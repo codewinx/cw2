@@ -77,7 +77,7 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-in-out bg-white shadow-lg py-1 ${
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-in-out bg-white shadow-lg py- ${
         visible ? "translate-y-0" : "-translate-y-full"
       }`}
     >
