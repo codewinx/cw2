@@ -27,7 +27,7 @@ export default function Header() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
-
+  
   // Smooth scroll for links
   useEffect(() => {
     const links = document.querySelectorAll("a[data-scroll]");
@@ -93,10 +93,11 @@ export default function Header() {
             <div>
              <div>
               <img
-              src="/images/LOGO3.png"
-              alt="Bharat Infra Logo"
-              className="h-18 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
-            />
+  src="/images/logo.png"
+  alt="Bharat Infra Logo"
+  className="h-[120px] w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+/>
+
             </div>
             </div>
           </Link>
